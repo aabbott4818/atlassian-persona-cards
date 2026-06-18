@@ -131,6 +131,26 @@
     .tension-card .right p { margin:0; font-size:var(--text-sm); color:var(--color-text); }
     .tension-card .right .quote { font-family:var(--font-display); font-size:1rem; color:var(--color-text); background:var(--color-accent-soft); padding:var(--space-3); border-radius:var(--radius-md); border-left:3px solid var(--color-primary); }
 
+    /* Role toggle on tension cards */
+    .role-toggle { display:flex; flex-wrap:wrap; gap:var(--space-2); margin-top:var(--space-3); align-items:center; }
+    .role-toggle .role-label { font-size:var(--text-xs); color:var(--color-text-muted); font-weight:700; text-transform:uppercase; letter-spacing:.08em; width:100%; margin-bottom:var(--space-1); }
+    .role-btn {
+      font-size:var(--text-xs); font-weight:600;
+      padding:var(--space-2) var(--space-3);
+      background:var(--color-surface-offset); color:var(--color-text-muted);
+      border:1px solid var(--color-border); border-radius:var(--radius-full);
+      cursor:pointer; transition:all .15s ease; min-height:32px; line-height:1;
+      font-family:inherit;
+    }
+    .role-btn:hover { color:var(--color-text); border-color:var(--color-text-muted); }
+    .role-btn:focus-visible { outline:2px solid var(--color-primary); outline-offset:2px; }
+    .role-btn[aria-pressed="true"] { background:var(--color-primary); color:var(--color-text-inverse); border-color:var(--color-primary); }
+    .role-btn.consensus[aria-pressed="true"] { background:var(--color-text); color:var(--color-surface); border-color:var(--color-text); }
+    .tension-card .right .role-pane { display:none; flex-direction:column; gap:var(--space-3); }
+    .tension-card .right .role-pane.is-active { display:flex; }
+    .tension-card .right .role-pane .role-question { background:color-mix(in oklab, var(--color-primary) 8%, transparent); border:1px solid color-mix(in oklab, var(--color-primary) 25%, transparent); border-radius:var(--radius-md); padding:var(--space-3); }
+    .tension-card .right .role-pane .role-question h4 { color:var(--color-primary); }
+
     /* MEDDPICC panel */
     .meddpicc-card { padding:var(--space-6); margin-top:var(--space-8); }
     .meddpicc-card h2 { font-family:var(--font-display); margin:0 0 var(--space-2); font-size:var(--text-xl); }
@@ -707,21 +727,48 @@
       <section id="viewTension" class="view" role="tabpanel" aria-labelledby="btnTension">
         <div class="tension-grid">
 
-          <article class="tension-card">
+
+          <article class="tension-card" data-tension="1">
             <div class="left">
               <div class="eyebrow">Tension 1</div>
               <h3>Tool sprawl &amp; the consolidation overdue</h3>
-              <div class="pill-list">
-                <span class="pill">CIO</span>
-                <span class="pill">CFO</span>
+              <div class="role-toggle" role="tablist" aria-label="View tension 1 from a specific role's perspective">
+                <span class="role-label">View from</span>
+                <button type="button" class="role-btn consensus" data-role="consensus" aria-pressed="true">Consensus</button>
+                <button type="button" class="role-btn" data-role="cio" aria-pressed="false">CIO</button>
+                <button type="button" class="role-btn" data-role="cfo" aria-pressed="false">CFO</button>
               </div>
             </div>
             <div class="right">
-              <div>
-                <h4>What both personas are feeling</h4>
-                <p>Software spend grew faster than headcount, AI added another layer of point tools, and renewals are now landing within months of each other. Neither persona has a portfolio strategy that survives the next board meeting.</p>
+              <div class="role-pane is-active" data-pane="consensus">
+                <div>
+                  <h4>What both personas are feeling</h4>
+                  <p>Software spend grew faster than headcount, AI added another layer of point tools, and renewals are now landing within months of each other. Neither persona has a portfolio strategy that survives the next board meeting.</p>
+                </div>
+                <div class="quote">"We've been promising to rationalise the stack for two years and the tool count is still going up."</div>
               </div>
-              <div class="quote">"We've been promising to rationalise the stack for two years and the tool count is still going up."</div>
+              <div class="role-pane" data-pane="cio" hidden>
+                <div>
+                  <h4>What CIO is feeling</h4>
+                  <p>I inherited a stack I didn't choose, every line item has a champion somewhere in the business, and the AI vendors are adding to it faster than I can rationalise it. I can't tell the board which tools are load-bearing and which are political.</p>
+                </div>
+                <div class="quote">"I have 40-something SaaS contracts I can name and another hundred I can't."</div>
+                <div class="role-question">
+                  <h4>Question CIO would surface in the room</h4>
+                  <p>"If we drew a line on the stack today and said 'these stay, these go,' who in this room would defend each tool — and is the defence value or inertia?"</p>
+                </div>
+              </div>
+              <div class="role-pane" data-pane="cfo" hidden>
+                <div>
+                  <h4>What CFO is feeling</h4>
+                  <p>Software spend is the line item growing fastest with the least visibility into return. Renewals stack up across the year, finance gets pulled in days before each one, and every uplift conversation starts with 'we can't move off this.' That's not a procurement problem; it's a portfolio problem.</p>
+                </div>
+                <div class="quote">"Every renewal is a negotiation we already lost."</div>
+                <div class="role-question">
+                  <h4>Question CFO would surface in the room</h4>
+                  <p>"Of next year's software renewals, how many are we entering with a credible alternative — and for the ones where we have none, what does that cost us at the negotiating table?"</p>
+                </div>
+              </div>
               <div>
                 <h4>Where Atlassian lands</h4>
                 <p>Atlassian Cloud Enterprise + Teamwork Collection as a consolidation target that absorbs the AI line item rather than adding to it. The Data Center to Cloud forcing function makes 2026 the budget cycle this gets decided in.</p>
@@ -729,22 +776,59 @@
             </div>
           </article>
 
-          <article class="tension-card">
+          <article class="tension-card" data-tension="2">
             <div class="left">
               <div class="eyebrow">Tension 2</div>
               <h3>AI bought, ROI missing</h3>
-              <div class="pill-list">
-                <span class="pill">CIO</span>
-                <span class="pill">COO</span>
-                <span class="pill">CFO</span>
+              <div class="role-toggle" role="tablist" aria-label="View tension 2 from a specific role's perspective">
+                <span class="role-label">View from</span>
+                <button type="button" class="role-btn consensus" data-role="consensus" aria-pressed="true">Consensus</button>
+                <button type="button" class="role-btn" data-role="cio" aria-pressed="false">CIO</button>
+                <button type="button" class="role-btn" data-role="coo" aria-pressed="false">COO</button>
+                <button type="button" class="role-btn" data-role="cfo" aria-pressed="false">CFO</button>
               </div>
             </div>
             <div class="right">
-              <div>
-                <h4>What all three personas are feeling</h4>
-                <p>Copilot, an LLM POC, a vendor pilot — none have produced a board-defensible number. The board is asking, the auditors are asking, and nobody owns the answer.</p>
+              <div class="role-pane is-active" data-pane="consensus">
+                <div>
+                  <h4>What all three personas are feeling</h4>
+                  <p>Copilot, an LLM POC, a vendor pilot — none have produced a board-defensible number. The board is asking, the auditors are asking, and nobody owns the answer.</p>
+                </div>
+                <div class="quote">"We've spent on AI. I cannot tell you what we got."</div>
               </div>
-              <div class="quote">"We've spent on AI. I cannot tell you what we got."</div>
+              <div class="role-pane" data-pane="cio" hidden>
+                <div>
+                  <h4>What CIO is feeling</h4>
+                  <p>We've stood up Copilot, two LLM pilots, and a vendor POC. Each one demos well and none of them sit inside a workflow that produces a number I can show the board. The next AI vendor through the door will be the fourth answer to a question we haven't framed.</p>
+                </div>
+                <div class="quote">"We bought the tools. We didn't buy the outcome."</div>
+                <div class="role-question">
+                  <h4>Question CIO would surface in the room</h4>
+                  <p>"Which of our AI investments today produces a metric the CFO would defend in a board meeting — and if the honest answer is 'none yet,' what's the structural reason?"</p>
+                </div>
+              </div>
+              <div class="role-pane" data-pane="coo" hidden>
+                <div>
+                  <h4>What COO is feeling</h4>
+                  <p>AI showed up in every functional plan this year and I can't tell you which function moved a real operating metric because of it. Cycle times, handle times, throughput — the numbers look the same. The story is louder than the result.</p>
+                </div>
+                <div class="quote">"Every team has an AI slide. None of them have a number."</div>
+                <div class="role-question">
+                  <h4>Question COO would surface in the room</h4>
+                  <p>"If we audited the operating KPIs by function this quarter, where has AI actually moved the needle — and where are we still confusing activity with outcome?"</p>
+                </div>
+              </div>
+              <div class="role-pane" data-pane="cfo" hidden>
+                <div>
+                  <h4>What CFO is feeling</h4>
+                  <p>I've approved AI spend in every functional budget for two years and I'm being asked to approve more next year. I have no consolidated view of what we've spent, what we've gotten, or what the unit economics are. The audit committee is going to ask, and I don't have an answer.</p>
+                </div>
+                <div class="quote">"I funded AI everywhere. I can't tell you the ROI anywhere."</div>
+                <div class="role-question">
+                  <h4>Question CFO would surface in the room</h4>
+                  <p>"Can we produce, by next board meeting, one page that shows total AI spend, what we got for it, and where the next pound goes — or are we going to keep approving line by line?"</p>
+                </div>
+              </div>
               <div>
                 <h4>Where Atlassian lands</h4>
                 <p>Rovo isn't an AI feature being sold on top of the platform — it's the value of having built the substrate. The 2x ARR growth differential reported in Atlassian's Q3 FY26 letter is the proof point that AI ROI requires connected work, not better models.</p>
@@ -752,21 +836,47 @@
             </div>
           </article>
 
-          <article class="tension-card">
+          <article class="tension-card" data-tension="3">
             <div class="left">
               <div class="eyebrow">Tension 3</div>
               <h3>Engineering throughput is a black box</h3>
-              <div class="pill-list">
-                <span class="pill">Platform Eng</span>
-                <span class="pill">COO</span>
+              <div class="role-toggle" role="tablist" aria-label="View tension 3 from a specific role's perspective">
+                <span class="role-label">View from</span>
+                <button type="button" class="role-btn consensus" data-role="consensus" aria-pressed="true">Consensus</button>
+                <button type="button" class="role-btn" data-role="platform" aria-pressed="false">Platform Eng</button>
+                <button type="button" class="role-btn" data-role="coo" aria-pressed="false">COO</button>
               </div>
             </div>
             <div class="right">
-              <div>
-                <h4>What both personas are feeling</h4>
-                <p>Code generation moved fast. Cycle time didn't. The CEO has stopped believing the productivity reports and the board has stopped asking nicely.</p>
+              <div class="role-pane is-active" data-pane="consensus">
+                <div>
+                  <h4>What both personas are feeling</h4>
+                  <p>Code generation moved fast. Cycle time didn't. The CEO has stopped believing the productivity reports and the board has stopped asking nicely.</p>
+                </div>
+                <div class="quote">"We rolled out Copilot. The number didn't move."</div>
               </div>
-              <div class="quote">"We rolled out Copilot. The number didn't move."</div>
+              <div class="role-pane" data-pane="platform" hidden>
+                <div>
+                  <h4>What Platform Eng is feeling</h4>
+                  <p>We shipped Copilot, we've onboarded the developers, and the velocity numbers haven't moved the way the leadership deck said they would. Lead time looks the same, PR cycle looks the same, and I'm being asked to explain why the AI investment hasn't translated. The bottleneck was never the keystroke.</p>
+                </div>
+                <div class="quote">"We made code generation faster. We didn't make shipping faster."</div>
+                <div class="role-question">
+                  <h4>Question Platform Eng would surface in the room</h4>
+                  <p>"If we mapped where engineering time actually goes — coding, reviewing, waiting, context-switching — which of those buckets has AI touched, and which still owns the cycle?"</p>
+                </div>
+              </div>
+              <div class="role-pane" data-pane="coo" hidden>
+                <div>
+                  <h4>What COO is feeling</h4>
+                  <p>The board treats engineering output as a black box and I'm the one explaining the box. Productivity reports show velocity points and PR counts; they don't show whether the things we said we'd ship this quarter shipped. AI tools added to the report without changing the answer.</p>
+                </div>
+                <div class="quote">"I can't tell the board what engineering produced. I can tell them what they did."</div>
+                <div class="role-question">
+                  <h4>Question COO would surface in the room</h4>
+                  <p>"If we removed every vanity metric from the engineering scorecard, what's left that the board would actually use to evaluate this quarter — and would AI have moved any of it?"</p>
+                </div>
+              </div>
               <div>
                 <h4>Where Atlassian lands</h4>
                 <p>Rovo Code Reviewer + Compass + Jira AI deliver measurable lead-time reductions (Atlassian internal: 45% PR cycle improvement; Jira customers: 35% Lead Time to Start reduction). Throughput becomes a number, not a vibe.</p>
@@ -774,22 +884,59 @@
             </div>
           </article>
 
-          <article class="tension-card">
+          <article class="tension-card" data-tension="4">
             <div class="left">
               <div class="eyebrow">Tension 4</div>
               <h3>ServiceNow is too expensive, too embedded</h3>
-              <div class="pill-list">
-                <span class="pill">ITSM</span>
-                <span class="pill">CFO</span>
-                <span class="pill">CIO</span>
+              <div class="role-toggle" role="tablist" aria-label="View tension 4 from a specific role's perspective">
+                <span class="role-label">View from</span>
+                <button type="button" class="role-btn consensus" data-role="consensus" aria-pressed="true">Consensus</button>
+                <button type="button" class="role-btn" data-role="itsm" aria-pressed="false">ITSM</button>
+                <button type="button" class="role-btn" data-role="cfo" aria-pressed="false">CFO</button>
+                <button type="button" class="role-btn" data-role="cio" aria-pressed="false">CIO</button>
               </div>
             </div>
             <div class="right">
-              <div>
-                <h4>What all three personas are feeling</h4>
-                <p>The ServiceNow renewal is being defended on switching cost, not value. Every uplift makes the math worse. The next conversation is uncomfortable for whoever runs ITSM.</p>
+              <div class="role-pane is-active" data-pane="consensus">
+                <div>
+                  <h4>What all three personas are feeling</h4>
+                  <p>The ServiceNow renewal is being defended on switching cost, not value. Every uplift makes the math worse. The next conversation is uncomfortable for whoever runs ITSM.</p>
+                </div>
+                <div class="quote">"We can't rip it out, but we can't keep paying this either."</div>
               </div>
-              <div class="quote">"We can't rip it out, but we can't keep paying this either."</div>
+              <div class="role-pane" data-pane="itsm" hidden>
+                <div>
+                  <h4>What ITSM is feeling</h4>
+                  <p>I run a service operation on a platform I can't justify the price of and can't see a clean way off. Every workflow we've built is a switching cost I'd have to defend. I know the math is bad; I also know I'm the one who eats the migration risk if we move.</p>
+                </div>
+                <div class="quote">"I'd leave tomorrow if I could carry the workflows. I can't."</div>
+                <div class="role-question">
+                  <h4>Question ITSM would surface in the room</h4>
+                  <p>"If we could replace 60-70% of what we do in ServiceNow at a fraction of the cost — and parallel-run for a year — what's the actual technical blocker, and is it as fixed as we tell ourselves it is?"</p>
+                </div>
+              </div>
+              <div class="role-pane" data-pane="cfo" hidden>
+                <div>
+                  <h4>What CFO is feeling</h4>
+                  <p>ServiceNow's uplift is the renewal I dread most, and every year I approve it because the alternative is a migration nobody wants to own. The cost line keeps growing faster than the user base; the savings case for moving keeps getting fatter. At some point this stops being a debate and becomes a write-down.</p>
+                </div>
+                <div class="quote">"We're paying enterprise prices to avoid a migration we'll eventually do anyway."</div>
+                <div class="role-question">
+                  <h4>Question CFO would surface in the room</h4>
+                  <p>"What does the three-year TCO look like if we stay versus move — and at what uplift figure does the migration cost itself become trivial relative to the saving?"</p>
+                </div>
+              </div>
+              <div class="role-pane" data-pane="cio" hidden>
+                <div>
+                  <h4>What CIO is feeling</h4>
+                  <p>ServiceNow is the platform I defend in budget conversations and quietly worry about in architecture ones. The roadmap takes us deeper into their ecosystem; the cost trajectory takes us further from anything I can model. I'd rather have the conversation now than be forced into it during a renewal.</p>
+                </div>
+                <div class="quote">"The roadmap and the cost curve are pointing in opposite directions."</div>
+                <div class="role-question">
+                  <h4>Question CIO would surface in the room</h4>
+                  <p>"If we made the decision to migrate now, with two budget cycles to plan it, what does the path look like — and is it materially worse than being forced into it under a renewal in 18 months?"</p>
+                </div>
+              </div>
               <div>
                 <h4>Where Atlassian lands</h4>
                 <p>Service Collection ($1B+ ARR, 30%+ YoY growth) + JSM Enterprise + Virtual Service Agent as a 60-80% TCO alternative. Saint-Gobain (70-82% cost reduction) and Sngular's automotive customer (68% saving) are the proof.</p>
@@ -797,28 +944,67 @@
             </div>
           </article>
 
-          <article class="tension-card">
+          <article class="tension-card" data-tension="5">
             <div class="left">
               <div class="eyebrow">Tension 5</div>
               <h3>Data Center is forcing a decision they aren't ready for</h3>
-              <div class="pill-list">
-                <span class="pill">CIO</span>
-                <span class="pill">Platform Eng</span>
-                <span class="pill">CFO</span>
+              <div class="role-toggle" role="tablist" aria-label="View tension 5 from a specific role's perspective">
+                <span class="role-label">View from</span>
+                <button type="button" class="role-btn consensus" data-role="consensus" aria-pressed="true">Consensus</button>
+                <button type="button" class="role-btn" data-role="cio" aria-pressed="false">CIO</button>
+                <button type="button" class="role-btn" data-role="platform" aria-pressed="false">Platform Eng</button>
+                <button type="button" class="role-btn" data-role="cfo" aria-pressed="false">CFO</button>
               </div>
             </div>
             <div class="right">
-              <div>
-                <h4>What all three personas are feeling</h4>
-                <p>Data Center EOL has a 2026 deadline. Migration was always going to happen. Nobody owns the budget conversation that goes with it, and the longer it's delayed the more expensive it becomes.</p>
+              <div class="role-pane is-active" data-pane="consensus">
+                <div>
+                  <h4>What all three personas are feeling</h4>
+                  <p>Data Center EOL has a 2026 deadline. Migration was always going to happen. Nobody owns the budget conversation that goes with it, and the longer it's delayed the more expensive it becomes.</p>
+                </div>
+                <div class="quote">"We knew this was coming. We're not ready."</div>
               </div>
-              <div class="quote">"We knew this was coming. We're not ready."</div>
+              <div class="role-pane" data-pane="cio" hidden>
+                <div>
+                  <h4>What CIO is feeling</h4>
+                  <p>The Data Center EOL is a fixed date and we've moved it down the priority list for two years. I now need to choose between a defensive lift-and-shift and a strategic platform decision, and I'm running out of runway to make the second option viable. Every quarter I wait, the migration gets more expensive and the strategic option gets less plausible.</p>
+                </div>
+                <div class="quote">"I have a deadline I can't move and a plan I haven't built."</div>
+                <div class="role-question">
+                  <h4>Question CIO would surface in the room</h4>
+                  <p>"Are we choosing the migration that's defensible to the board, or the one that's defensible to whoever inherits this stack in five years — and do we still have time to choose the second?"</p>
+                </div>
+              </div>
+              <div class="role-pane" data-pane="platform" hidden>
+                <div>
+                  <h4>What Platform Eng is feeling</h4>
+                  <p>I'm the one whose team carries the migration, and the longer it's delayed, the more it has to happen alongside everything else we said we'd ship this year. We've drifted on Data Center patches, our customisations have grown, and the cleanest path off keeps getting messier the longer we wait.</p>
+                </div>
+                <div class="quote">"Every quarter we wait, the migration gets harder, not easier."</div>
+                <div class="role-question">
+                  <h4>Question Platform Eng would surface in the room</h4>
+                  <p>"If we committed to a migration date today, what would my team have to stop doing to hit it — and are we willing to make that trade now, or will we make it under pressure later?"</p>
+                </div>
+              </div>
+              <div class="role-pane" data-pane="cfo" hidden>
+                <div>
+                  <h4>What CFO is feeling</h4>
+                  <p>Data Center migration is a budget conversation nobody has scoped properly and everyone is treating as next year's problem. The capex/opex shift, the licensing model change, the parallel-run costs — none of that has hit a finance plan. When it does, it'll be a surprise, and surprises in this seat don't get funded gracefully.</p>
+                </div>
+                <div class="quote">"The migration is in everybody's slides and nobody's budget."</div>
+                <div class="role-question">
+                  <h4>Question CFO would surface in the room</h4>
+                  <p>"If I had to put the migration in next year's plan, what is the all-in number — including parallel running, retraining, and the workflows we haven't migrated — and who owns each line of it?"</p>
+                </div>
+              </div>
               <div>
                 <h4>Where Atlassian lands</h4>
                 <p>The migration is the budget cycle. Treated reactively it's a cost. Treated strategically it's the entry point to Teamwork Collection, AI monetisation, and the platform consolidation everyone has been postponing. Air France-KLM's $600k annual saving is the playbook.</p>
               </div>
             </div>
           </article>
+
+        
 
         </div>
       </section>
@@ -948,6 +1134,24 @@
       btnTension.addEventListener('click', function(){ setView('tension'); });
       var savedView = localStorage.getItem('view');
       if (savedView === 'tension') setView('tension');
+
+      // Per-tension role toggle (Consensus / per-role panes)
+      var cards = document.querySelectorAll('.tension-card[data-tension]');
+      cards.forEach(function(card){
+        var buttons = card.querySelectorAll('.role-btn');
+        var panes = card.querySelectorAll('.role-pane');
+        function setRole(role){
+          buttons.forEach(function(b){ b.setAttribute('aria-pressed', b.dataset.role === role ? 'true' : 'false'); });
+          panes.forEach(function(p){
+            var isActive = p.dataset.pane === role;
+            p.classList.toggle('is-active', isActive);
+            if (isActive) { p.removeAttribute('hidden'); } else { p.setAttribute('hidden',''); }
+          });
+        }
+        buttons.forEach(function(b){
+          b.addEventListener('click', function(){ setRole(b.dataset.role); });
+        });
+      });
     })();
   </script>
 </body>
