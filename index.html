@@ -142,6 +142,23 @@
     .meddpicc-row .map { font-size:var(--text-xs); color:var(--color-text-muted); }
     .meddpicc-row .map strong { color:var(--color-text); }
 
+    /* Value quantification panel */
+    .value-card { padding:var(--space-6); margin-top:var(--space-8); border-top:3px solid var(--color-primary); }
+    .value-card h2 { font-family:var(--font-display); margin:0 0 var(--space-2); font-size:var(--text-xl); }
+    .value-card .lead { color:var(--color-text-muted); margin:0 0 var(--space-5); font-size:var(--text-sm); max-width:75ch; }
+    .value-card .honest { background:color-mix(in oklab, var(--color-purple) 8%, var(--color-surface-2)); border:1px solid color-mix(in oklab, var(--color-purple) 25%, transparent); border-radius:var(--radius-md); padding:var(--space-4); margin:0 0 var(--space-5); font-size:var(--text-sm); color:var(--color-text); }
+    .value-card .honest strong { color:var(--color-purple); font-family:var(--font-display); }
+    .value-grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:var(--space-4); }
+    .value-lens { padding:var(--space-4); background:var(--color-surface-2); border:1px solid var(--color-divider); border-radius:var(--radius-md); display:flex; flex-direction:column; gap:var(--space-2); }
+    .value-lens .tag { font-size:var(--text-xs); font-weight:600; color:var(--color-primary); letter-spacing:0.08em; text-transform:uppercase; }
+    .value-lens h4 { margin:0; font-size:var(--text-base); font-family:var(--font-display); color:var(--color-text); }
+    .value-lens .hook { font-size:var(--text-sm); color:var(--color-text); margin:0; font-style:italic; }
+    .value-lens .formula { font-size:var(--text-xs); background:var(--color-surface); border:1px dashed var(--color-divider); border-radius:var(--radius-sm); padding:var(--space-2) var(--space-3); color:var(--color-text-muted); font-family:ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .value-lens .anchor { font-size:var(--text-xs); color:var(--color-text-muted); margin:0; }
+    .value-lens .anchor strong { color:var(--color-text); }
+    .value-card .closer { margin-top:var(--space-5); padding:var(--space-4); background:color-mix(in oklab, var(--color-primary) 6%, var(--color-surface-2)); border-left:3px solid var(--color-primary); border-radius:var(--radius-sm); font-size:var(--text-sm); color:var(--color-text); }
+    .value-card .closer strong { color:var(--color-primary); font-family:var(--font-display); }
+
     /* Arc visualisation */
     .arc-card { padding:var(--space-6); margin-bottom:var(--space-6); }
     .arc-card h2 { font-family:var(--font-display); margin:0 0 var(--space-2); font-size:var(--text-xl); }
@@ -161,11 +178,11 @@
     .view.active { display:block; }
 
     @media (max-width: 1024px) {
-      .hero, .persona-grid, .opener-card, .tension-card, .meddpicc-grid, .arc { grid-template-columns:1fr; }
+      .hero, .persona-grid, .opener-card, .tension-card, .meddpicc-grid, .arc, .value-grid { grid-template-columns:1fr; }
     }
     @media (max-width: 640px) {
       .shell { padding:var(--space-4); }
-      .hero-card, .opener-card, .persona-card, .tension-card, .meddpicc-card, .arc-card { padding:var(--space-5); }
+      .hero-card, .opener-card, .persona-card, .tension-card, .meddpicc-card, .arc-card, .value-card { padding:var(--space-5); }
     }
   </style>
 </head>
@@ -207,10 +224,10 @@
         <article class="hero-card teaching">
           <div class="label">Teaching Narrative</div>
           <blockquote>
-            "Most enterprises I'm talking to right now have a quiet problem: they bought AI to make their teams faster, and instead they've made their tool sprawl more expensive. The consequence shows up in two places — the CFO can't defend the AI line, and the COO still doesn't trust the delivery dashboard. The flaw underneath both is the same: agents need a substrate, and nobody's substrate is connected. Atlassian is the only vendor where the substrate — Teamwork Graph — is already in production at enterprise scale. Rovo isn't being sold on top of it; Rovo is the value of having built it. The customers who've turned Rovo on are growing ARR at 2x. The ones who haven't are still buying AI tools that can't see each other."
+            "Most enterprises I'm talking to right now have a quiet problem: they bought AI to make their teams faster, and instead they've made their tool sprawl more expensive. The consequence shows up in two places — the CFO can't defend the AI line, and the COO still doesn't trust the delivery dashboard. The flaw underneath both is the same: agents need a substrate, and nobody's substrate is connected. Atlassian is the only vendor where the substrate — Teamwork Graph — is already in production at enterprise scale. Rovo isn't being sold on top of it; Rovo is the value of having built it. The customers who've turned Rovo on are expanding their Atlassian footprint at roughly 2x the rate of the ones who haven't — and the ones who haven't are still buying AI tools that can't see each other."
           </blockquote>
           <div class="source">
-            "2x ARR" verbatim from <a href="https://www.atlassian.com/blog/company-news/shareholder-letter-q3fy26" target="_blank" rel="noopener">Atlassian Q3 FY26 shareholder letter</a> · <a href="https://www.sec.gov/Archives/edgar/data/1650372/000165037226000024/teamq32026shareholderlet.htm" target="_blank" rel="noopener">SEC 8-K filing</a>
+            "2x rate" is an expansion-velocity ratio (Rovo cohort vs non-Rovo), not a per-customer ROI. Verbatim from <a href="https://www.atlassian.com/blog/company-news/shareholder-letter-q3fy26" target="_blank" rel="noopener">Atlassian Q3 FY26 shareholder letter</a> · <a href="https://www.sec.gov/Archives/edgar/data/1650372/000165037226000024/teamq32026shareholderlet.htm" target="_blank" rel="noopener">SEC 8-K filing</a>
           </div>
         </article>
       </section>
@@ -805,6 +822,45 @@
 
         </div>
       </section>
+
+      <!-- QUANTIFYING ROVO VALUE -->
+      <article class="value-card">
+        <h2>Quantifying the value Rovo customers extract</h2>
+        <p class="lead">A buyer will ask "what's the ROI?" within the first 30 minutes. Atlassian has not published a unified Rovo ROI figure, and that's actually a strength — it lets you build the value model with the customer using their own numbers, which is what their CFO will fund. Three lenses, in order of credibility.</p>
+
+        <div class="honest"><strong>Be honest first.</strong> The clean cohort signal is the <a href="https://www.atlassian.com/blog/company-news/shareholder-letter-q3fy26" target="_blank" rel="noopener">Q3 FY26 disclosure</a>: Rovo customers are expanding their Atlassian footprint at roughly 2x the rate of non-Rovo customers. That is an expansion-velocity claim, not a per-customer ROI claim. Don't oversell it. Use it to earn the right to build the real model below.</div>
+
+        <div class="value-grid">
+          <div class="value-lens">
+            <span class="tag">Lens 1 · Most defensible</span>
+            <h4>Time recovered on knowledge work</h4>
+            <p class="hook">"Rovo's value shows up where senior people waste time hunting context across tools."</p>
+            <p class="formula">FTE count × hours/week searching × loaded cost × % recovered</p>
+            <p class="anchor"><strong>Anchor:</strong> <a href="https://www.mckinsey.com/industries/technology-media-and-telecommunications/our-insights/the-social-economy" target="_blank" rel="noopener">McKinsey's 1.8 hours/day</a> on search and information gathering per knowledge worker. Teamwork Graph + Rovo collapses that across Jira, Confluence, GitHub, Slack, and the wiki.</p>
+            <p class="anchor"><strong>Discovery ask:</strong> "How many hours a week do your senior engineers and PMs spend stitching context together across your tools?"</p>
+          </div>
+
+          <div class="value-lens">
+            <span class="tag">Lens 2 · ITSM &amp; COO</span>
+            <h4>Ticket and workflow deflection</h4>
+            <p class="hook">"Rovo agents resolve tier-1 work without a human touching it."</p>
+            <p class="formula">Annual ticket volume × deflection rate × fully-loaded cost per ticket</p>
+            <p class="anchor"><strong>Anchor:</strong> <a href="https://diginomica.com/atlassian-team-25-customers-share-first-impressions-putting-rovo-ai-agent-work" target="_blank" rel="noopener">1E saw an 80% reduction</a> in ticket handling time; <a href="https://pages.eml.atlassian.com/rs/594-ATC-127/images/Atlassian-ITSM-Case-Study-Ebook.pdf" target="_blank" rel="noopener">Sngular logged 68% cost saving</a> on the workflow Rovo automated; Saint-Gobain cut JSM cost 70% in year one and 82% by year three.</p>
+            <p class="anchor"><strong>Discovery ask:</strong> "What's your current ticket volume, average handle time, and loaded cost per ticket — and what share of that is repeatable tier-1?"</p>
+          </div>
+
+          <div class="value-lens">
+            <span class="tag">Lens 3 · CIO &amp; CFO</span>
+            <h4>Tool consolidation</h4>
+            <p class="hook">"Most enterprises have 4-8 overlapping tools doing pieces of what Rovo + Teamwork Graph does as one."</p>
+            <p class="formula">Σ overlapping AI / search / ITSM seat costs − Atlassian platform cost = consolidation delta</p>
+            <p class="anchor"><strong>Anchor:</strong> <a href="https://www.atlassian.com/blog/it-service-management/reimagining-service-management-with-dominos-and-nrma" target="_blank" rel="noopener">Domino's consolidated 6 ITSM tools</a> across 12 markets and 3,800 stores onto JSM; <a href="https://www.atlassian.com/customers/air-france-klm" target="_blank" rel="noopener">Air France-KLM saved $600k/year</a> via DC→Cloud migration.</p>
+            <p class="anchor"><strong>Discovery ask:</strong> "What are you spending today on Glean, Guru, Notion AI, ServiceNow Now Assist, GitHub Copilot Enterprise, Microsoft Copilot — and which of those overlap?"</p>
+          </div>
+        </div>
+
+        <div class="closer"><strong>How to land this with a buyer.</strong> Don't lead with vendor numbers. Try: "I wouldn't be comfortable quoting an ROI without your inputs. What I can do is walk you through the three places Rovo customers are extracting value, and we can build the model together against your data. That's the number your CFO will actually defend." That's MEDDPICC Metrics done properly — and it's the move a new-logo hunter makes that wins the second meeting.</div>
+      </article>
 
       <!-- MEDDPICC TRANSLATION -->
       <article class="meddpicc-card">
