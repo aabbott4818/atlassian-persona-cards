@@ -1,0 +1,9 @@
+{
+  "name": "atlassian-persona-cards",
+  "version": "1.0.0",
+  "description": "Atlassian Enterprise New Logo UKI — persona discovery cards learning aid",
+  "scripts": {
+    "build": "echo 'static site'",
+    "start": "npx serve ."
+  }
+}

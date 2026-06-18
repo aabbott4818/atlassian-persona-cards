@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Atlassian Enterprise — Persona Discovery Cards</title>
+  <meta name="description" content="A learning aid for positioning Atlassian value early, qualifying pain, aligning on outcomes, and earning the right to a deeper evaluation. Five buyer personas, By Persona / By Tension views, MEDDPICC translation, and a first-conversation opener." />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Atlassian Enterprise — Persona Discovery Cards" />
+  <meta property="og:description" content="A coaching aid for the Atlassian Enterprise New Logo motion. Position value early, qualify pain, earn the evaluation." />
+  <meta property="og:image" content="og-preview.svg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Atlassian Enterprise — Persona Discovery Cards" />
+  <meta name="twitter:description" content="A coaching aid for the Atlassian Enterprise New Logo motion." />
+  <meta name="twitter:image" content="og-preview.svg" />
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&f[]=zodiak@400,700&display=swap" rel="stylesheet">
+  <style>
+    :root, [data-theme="light"] {
+      --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+      --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+      --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+      --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
+      --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
+      --text-2xl: clamp(2rem, 1.2rem + 2.5vw, 3.5rem);
+      --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem; --space-4: 1rem; --space-5: 1.25rem; --space-6: 1.5rem; --space-8: 2rem; --space-10: 2.5rem; --space-12: 3rem; --space-16: 4rem;
+      --color-bg: #f7f6f2; --color-surface: #f9f8f5; --color-surface-2: #fbfbf9; --color-surface-offset: #edeae5; --color-border: #d4d1ca; --color-divider: #dcd9d5;
+      --color-text: #28251d; --color-text-muted: #6e6c67; --color-text-faint: #9a9892; --color-text-inverse: #f9f8f4;
+      --color-primary: #0052cc; --color-primary-hover: #003884; --color-primary-highlight: #deebff;
+      --color-accent: #0c66e4; --color-accent-soft: #e9f2ff;
+      --color-orange: #da7101; --color-gold: #d19900; --color-blue: #006494; --color-purple: #6554c0; --color-success: #1f7a4c; --color-error: #a12c7b;
+      --radius-sm: 0.375rem; --radius-md: 0.5rem; --radius-lg: 0.75rem; --radius-xl: 1rem; --radius-full: 9999px;
+      --shadow-sm: 0 1px 2px rgba(30,26,20,.06); --shadow-md: 0 8px 24px rgba(30,26,20,.08); --shadow-lg: 0 16px 40px rgba(30,26,20,.12);
+      --font-display: 'Zodiak', Georgia, serif; --font-body: 'Satoshi', Inter, sans-serif;
+    }
+    [data-theme="dark"] {
+      --color-bg: #161a23; --color-surface: #1c2030; --color-surface-2: #232838; --color-surface-offset: #1e2333; --color-border: #383d4d; --color-divider: #262b3a;
+      --color-text: #d6dae3; --color-text-muted: #9aa0b0; --color-text-faint: #6d7385; --color-text-inverse: #161a23;
+      --color-primary: #579dff; --color-primary-hover: #85b8ff; --color-primary-highlight: #1d2a44;
+      --color-accent: #579dff; --color-accent-soft: #1d2a44;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,.2); --shadow-md: 0 8px 24px rgba(0,0,0,.35); --shadow-lg: 0 16px 40px rgba(0,0,0,.45);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; min-height: 100vh;
+      background:
+        radial-gradient(circle at top right, color-mix(in oklab, var(--color-primary) 8%, transparent), transparent 35%),
+        radial-gradient(circle at bottom left, color-mix(in oklab, var(--color-purple) 6%, transparent), transparent 35%),
+        var(--color-bg);
+      color: var(--color-text); font-family: var(--font-body); line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--color-primary); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .skip { position:absolute; left:-9999px; }
+    .skip:focus { left:var(--space-4); top:var(--space-4); background:var(--color-surface); padding:var(--space-3); border-radius:var(--radius-md); z-index:20; }
+    .shell { max-width: 1280px; margin: 0 auto; padding: var(--space-6); }
+
+    /* Top bar */
+    .topbar { display:flex; align-items:center; justify-content:space-between; padding-bottom:var(--space-4); margin-bottom:var(--space-4); border-bottom:1px solid var(--color-divider); }
+    .brand { display:flex; align-items:center; gap:var(--space-3); font-family:var(--font-display); font-weight:700; font-size:1.05rem; }
+    .brand-mark { width:36px; height:36px; border-radius:10px; background:linear-gradient(135deg, var(--color-primary), var(--color-purple)); display:grid; place-items:center; color:#fff; font-family:var(--font-display); font-weight:700; font-size:1rem; box-shadow:var(--shadow-sm); }
+    .topbar-actions { display:flex; gap:var(--space-2); align-items:center; }
+    .iconbtn { background:transparent; border:1px solid var(--color-border); color:var(--color-text-muted); width:38px; height:38px; border-radius:var(--radius-md); cursor:pointer; display:grid; place-items:center; }
+    .iconbtn:hover { background:var(--color-surface); color:var(--color-text); }
+
+    /* Hero */
+    .hero { display:grid; grid-template-columns: 1.45fr 1fr; gap:var(--space-6); margin-bottom:var(--space-8); }
+    .hero-card, .panel, .persona-card, .tension-card, .meddpicc-card, .opener-card { background:color-mix(in oklab, var(--color-surface) 90%, transparent); border:1px solid color-mix(in oklab, var(--color-text) 10%, transparent); border-radius:var(--radius-xl); box-shadow:var(--shadow-sm); }
+    .hero-card { padding:var(--space-8); position:relative; overflow:hidden; }
+    .hero-card::after { content:""; position:absolute; inset:auto -10% -35% auto; width:280px; height:280px; border-radius:50%; background:color-mix(in oklab, var(--color-primary) 14%, transparent); filter:blur(14px); }
+    .eyebrow { font-size:var(--text-xs); letter-spacing:.18em; text-transform:uppercase; color:var(--color-text-muted); font-weight:700; }
+    .hero h1 { font-family:var(--font-display); font-weight:700; font-size:var(--text-2xl); line-height:1.08; margin:var(--space-3) 0 var(--space-4); letter-spacing:-0.01em; }
+    .hero h1 em { font-style:normal; background:linear-gradient(120deg, var(--color-primary), var(--color-purple)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+    .hero p.lead { font-size:var(--text-base); color:var(--color-text-muted); max-width:60ch; margin:0 0 var(--space-5); }
+    .hero-meta { display:flex; flex-wrap:wrap; gap:var(--space-2); }
+    .chip { display:inline-flex; align-items:center; gap:var(--space-2); padding:var(--space-2) var(--space-3); background:var(--color-surface-offset); color:var(--color-text-muted); border-radius:var(--radius-full); font-size:var(--text-xs); font-weight:500; border:1px solid var(--color-border); }
+    .chip strong { color:var(--color-text); font-weight:700; }
+
+    .teaching { padding:var(--space-6); display:flex; flex-direction:column; gap:var(--space-4); }
+    .teaching .label { font-size:var(--text-xs); letter-spacing:.18em; text-transform:uppercase; color:var(--color-primary); font-weight:700; }
+    .teaching blockquote { margin:0; font-family:var(--font-display); font-size:var(--text-lg); line-height:1.32; color:var(--color-text); }
+    .teaching .source { font-size:var(--text-xs); color:var(--color-text-faint); }
+
+    /* Toggle */
+    .view-toggle { display:inline-flex; padding:var(--space-1); background:var(--color-surface-offset); border:1px solid var(--color-border); border-radius:var(--radius-full); gap:var(--space-1); margin-bottom:var(--space-6); }
+    .view-toggle button { background:transparent; border:none; padding:var(--space-3) var(--space-5); border-radius:var(--radius-full); cursor:pointer; color:var(--color-text-muted); font-family:var(--font-body); font-weight:600; font-size:var(--text-sm); display:inline-flex; align-items:center; gap:var(--space-2); }
+    .view-toggle button[aria-pressed="true"] { background:var(--color-surface); color:var(--color-text); box-shadow:var(--shadow-sm); border:1px solid var(--color-border); }
+    .view-toggle .count { font-size:var(--text-xs); color:var(--color-text-faint); }
+
+    /* Opener panel */
+    .opener-card { padding:var(--space-6); margin-bottom:var(--space-6); display:grid; grid-template-columns: 1fr 1.4fr; gap:var(--space-6); }
+    .opener-card .left { display:flex; flex-direction:column; gap:var(--space-3); }
+    .opener-card .left h2 { font-family:var(--font-display); margin:0; font-size:var(--text-lg); }
+    .opener-card .left p { margin:0; color:var(--color-text-muted); font-size:var(--text-sm); }
+    .opener-card .opener-text { background:var(--color-accent-soft); border:1px solid color-mix(in oklab, var(--color-primary) 30%, transparent); border-radius:var(--radius-lg); padding:var(--space-5); font-family:var(--font-display); font-size:1.05rem; line-height:1.4; color:var(--color-text); }
+
+    /* Persona grid */
+    .persona-grid { display:grid; grid-template-columns:repeat(2, 1fr); gap:var(--space-5); }
+    .persona-card { padding:var(--space-6); display:flex; flex-direction:column; gap:var(--space-4); position:relative; }
+    .persona-card .header { display:flex; flex-direction:column; gap:var(--space-1); }
+    .persona-card .header .eyebrow { color:var(--color-primary); }
+    .persona-card .header h3 { font-family:var(--font-display); font-weight:700; font-size:var(--text-lg); margin:0; }
+    .persona-card .header .role-meta { color:var(--color-text-muted); font-size:var(--text-sm); }
+    .persona-card .competitor-strip { display:flex; flex-wrap:wrap; gap:var(--space-2); padding:var(--space-2) var(--space-3); background:color-mix(in oklab, var(--color-error) 6%, transparent); border:1px solid color-mix(in oklab, var(--color-error) 22%, transparent); border-radius:var(--radius-md); font-size:var(--text-xs); color:var(--color-text-muted); }
+    .persona-card .competitor-strip strong { color:var(--color-error); font-weight:700; letter-spacing:.05em; }
+    .section { display:flex; flex-direction:column; gap:var(--space-2); padding-top:var(--space-3); border-top:1px solid var(--color-divider); }
+    .section:first-of-type { border-top:none; padding-top:0; }
+    .section h4 { margin:0; font-size:var(--text-xs); letter-spacing:.14em; text-transform:uppercase; color:var(--color-text-muted); font-weight:700; }
+    .section p, .section li { font-size:var(--text-sm); color:var(--color-text); margin:0; }
+    .section ul { margin:0; padding-left:1.1rem; display:flex; flex-direction:column; gap:var(--space-2); }
+    .section.hidden-flaw { background:linear-gradient(180deg, color-mix(in oklab, var(--color-purple) 8%, transparent), transparent); border:1px solid color-mix(in oklab, var(--color-purple) 22%, transparent); border-radius:var(--radius-md); padding:var(--space-3); }
+    .section.hidden-flaw h4 { color:var(--color-purple); }
+    .section.consequence { background:linear-gradient(180deg, color-mix(in oklab, var(--color-orange) 8%, transparent), transparent); border:1px solid color-mix(in oklab, var(--color-orange) 22%, transparent); border-radius:var(--radius-md); padding:var(--space-3); }
+    .section.consequence h4 { color:var(--color-orange); }
+    .section.proof { background:linear-gradient(180deg, color-mix(in oklab, var(--color-success) 8%, transparent), transparent); border:1px solid color-mix(in oklab, var(--color-success) 22%, transparent); border-radius:var(--radius-md); padding:var(--space-3); }
+    .section.proof h4 { color:var(--color-success); }
+    .section.opener-quote { background:var(--color-accent-soft); border:1px solid color-mix(in oklab, var(--color-primary) 25%, transparent); border-radius:var(--radius-md); padding:var(--space-3); }
+    .section.opener-quote h4 { color:var(--color-primary); }
+    .section.opener-quote p { font-family:var(--font-display); font-size:0.98rem; line-height:1.4; }
+    .pill-list { display:flex; flex-wrap:wrap; gap:var(--space-2); }
+    .pill { font-size:var(--text-xs); padding:var(--space-1) var(--space-3); background:var(--color-surface-offset); color:var(--color-text-muted); border:1px solid var(--color-border); border-radius:var(--radius-full); }
+
+    /* Tension view */
+    .tension-grid { display:grid; grid-template-columns:1fr; gap:var(--space-5); }
+    .tension-card { padding:var(--space-6); display:grid; grid-template-columns: 1fr 2fr; gap:var(--space-6); }
+    .tension-card .left h3 { font-family:var(--font-display); font-weight:700; font-size:var(--text-lg); margin:0 0 var(--space-2); }
+    .tension-card .left .pill-list { margin-top:var(--space-3); }
+    .tension-card .right { display:flex; flex-direction:column; gap:var(--space-3); }
+    .tension-card .right h4 { margin:0; font-size:var(--text-xs); letter-spacing:.14em; text-transform:uppercase; color:var(--color-text-muted); font-weight:700; }
+    .tension-card .right p { margin:0; font-size:var(--text-sm); color:var(--color-text); }
+    .tension-card .right .quote { font-family:var(--font-display); font-size:1rem; color:var(--color-text); background:var(--color-accent-soft); padding:var(--space-3); border-radius:var(--radius-md); border-left:3px solid var(--color-primary); }
+
+    /* MEDDPICC panel */
+    .meddpicc-card { padding:var(--space-6); margin-top:var(--space-8); }
+    .meddpicc-card h2 { font-family:var(--font-display); margin:0 0 var(--space-2); font-size:var(--text-xl); }
+    .meddpicc-card .lead { color:var(--color-text-muted); margin:0 0 var(--space-5); font-size:var(--text-sm); max-width:70ch; }
+    .meddpicc-grid { display:grid; grid-template-columns:repeat(2, 1fr); gap:var(--space-4); }
+    .meddpicc-row { padding:var(--space-4); background:var(--color-surface-2); border:1px solid var(--color-divider); border-radius:var(--radius-md); }
+    .meddpicc-row h4 { margin:0 0 var(--space-2); font-size:var(--text-sm); color:var(--color-primary); font-family:var(--font-display); }
+    .meddpicc-row p { margin:0 0 var(--space-2); font-size:var(--text-sm); color:var(--color-text); }
+    .meddpicc-row .map { font-size:var(--text-xs); color:var(--color-text-muted); }
+    .meddpicc-row .map strong { color:var(--color-text); }
+
+    /* Arc visualisation */
+    .arc-card { padding:var(--space-6); margin-bottom:var(--space-6); }
+    .arc-card h2 { font-family:var(--font-display); margin:0 0 var(--space-2); font-size:var(--text-xl); }
+    .arc-card .lead { color:var(--color-text-muted); margin:0 0 var(--space-5); font-size:var(--text-sm); }
+    .arc { display:grid; grid-template-columns:repeat(4, 1fr); gap:var(--space-3); }
+    .arc-step { padding:var(--space-4); background:var(--color-surface-2); border:1px solid var(--color-divider); border-radius:var(--radius-md); position:relative; }
+    .arc-step .num { width:28px; height:28px; border-radius:50%; background:var(--color-primary); color:#fff; display:grid; place-items:center; font-weight:700; font-size:var(--text-xs); margin-bottom:var(--space-2); }
+    .arc-step h4 { font-family:var(--font-display); margin:0 0 var(--space-2); font-size:var(--text-base); }
+    .arc-step p { margin:0; font-size:var(--text-sm); color:var(--color-text-muted); }
+    .arc-step .micro { font-size:var(--text-xs); color:var(--color-text-faint); margin-top:var(--space-2); }
+
+    /* Footer */
+    .footer { margin-top:var(--space-10); padding-top:var(--space-5); border-top:1px solid var(--color-divider); color:var(--color-text-muted); font-size:var(--text-xs); display:flex; flex-wrap:wrap; gap:var(--space-3); justify-content:space-between; }
+
+    /* View switching */
+    .view { display:none; }
+    .view.active { display:block; }
+
+    @media (max-width: 1024px) {
+      .hero, .persona-grid, .opener-card, .tension-card, .meddpicc-grid, .arc { grid-template-columns:1fr; }
+    }
+    @media (max-width: 640px) {
+      .shell { padding:var(--space-4); }
+      .hero-card, .opener-card, .persona-card, .tension-card, .meddpicc-card, .arc-card { padding:var(--space-5); }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="shell">
+
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark">A</div>
+        <div>
+          <div>Atlassian Enterprise · UKI</div>
+          <div style="font-size:var(--text-xs); color:var(--color-text-muted); font-weight:400;">Persona Discovery Cards · v1</div>
+        </div>
+      </div>
+      <div class="topbar-actions">
+        <a class="iconbtn" href="https://github.com/aabbott4818/atlassian-persona-cards" aria-label="View source on GitHub" title="GitHub">⌥</a>
+        <button class="iconbtn" id="themeToggle" aria-label="Toggle theme" title="Toggle theme">◐</button>
+      </div>
+    </header>
+
+    <main id="main">
+
+      <!-- HERO -->
+      <section class="hero">
+        <article class="hero-card">
+          <div class="eyebrow">Learning Aid · Enterprise New Logo UKI</div>
+          <h1>Position value early.<br/>Qualify pain. <em>Earn the evaluation.</em></h1>
+          <p class="lead">A reference page for the first conversation with an Atlassian enterprise buyer. Five personas, the tension underneath each one, the questions that surface MEDDPICC signal without sounding like a script, and a verified proof point per persona so the commercial story lands before the demo does.</p>
+          <div class="hero-meta">
+            <span class="chip"><strong>5</strong> personas</span>
+            <span class="chip"><strong>5</strong> tension clusters</span>
+            <span class="chip"><strong>50+</strong> discovery questions</span>
+            <span class="chip"><strong>5</strong> named customer proofs</span>
+            <span class="chip">Rovo + Teamwork Graph</span>
+          </div>
+        </article>
+
+        <article class="hero-card teaching">
+          <div class="label">Teaching Narrative</div>
+          <blockquote>
+            "Most enterprises I'm talking to right now have a quiet problem: they bought AI to make their teams faster, and instead they've made their tool sprawl more expensive. The consequence shows up in two places — the CFO can't defend the AI line, and the COO still doesn't trust the delivery dashboard. The flaw underneath both is the same: agents need a substrate, and nobody's substrate is connected. Atlassian is the only vendor where the substrate — Teamwork Graph — is already in production at enterprise scale. Rovo isn't being sold on top of it; Rovo is the value of having built it. The customers who've turned Rovo on are growing ARR at 2x. The ones who haven't are still buying AI tools that can't see each other."
+          </blockquote>
+          <div class="source">
+            "2x ARR" verbatim from <a href="https://www.atlassian.com/blog/company-news/shareholder-letter-q3fy26" target="_blank" rel="noopener">Atlassian Q3 FY26 shareholder letter</a> · <a href="https://www.sec.gov/Archives/edgar/data/1650372/000165037226000024/teamq32026shareholderlet.htm" target="_blank" rel="noopener">SEC 8-K filing</a>
+          </div>
+        </article>
+      </section>
+
+      <!-- THE ARC -->
+      <article class="arc-card panel">
+        <h2>How to use this page</h2>
+        <p class="lead">The cards are sequenced for the four moves you make in a first enterprise conversation — not for memorising features.</p>
+        <div class="arc">
+          <div class="arc-step">
+            <div class="num">1</div>
+            <h4>Position value early</h4>
+            <p>Open with the Hidden Flaw and the Consequence — never the product. The teaching narrative above is the frame.</p>
+            <div class="micro">Where to look · Hero teaching narrative + per-persona "First 90 Seconds"</div>
+          </div>
+          <div class="arc-step">
+            <div class="num">2</div>
+            <h4>Qualify the pain</h4>
+            <p>Use the discovery questions to test whether their tension matches the one on the card. If not, switch persona.</p>
+            <div class="micro">Where to look · Per-persona Discovery + By Tension view</div>
+          </div>
+          <div class="arc-step">
+            <div class="num">3</div>
+            <h4>Align on the outcome</h4>
+            <p>Anchor on the Consequence in their own number. Reference a named customer that has already crossed it.</p>
+            <div class="micro">Where to look · Per-persona Consequence + Proof Point</div>
+          </div>
+          <div class="arc-step">
+            <div class="num">4</div>
+            <h4>Earn the evaluation</h4>
+            <p>Only now do you propose looking deeper. The differentiating commercial value is what they evaluate — not the demo.</p>
+            <div class="micro">Where to look · Bridge Lines + MEDDPICC translation</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- OPENER PANEL -->
+      <article class="opener-card">
+        <div class="left">
+          <div class="eyebrow">First Conversation</div>
+          <h2>The opener that earns the right to discover</h2>
+          <p>A 30-second frame for any first enterprise conversation. Anchored in shared enterprise-sales heritage and the operator-first mindset. Works equally well in an interview, a discovery call, or a follow-up after a warm intro.</p>
+          <div class="pill-list">
+            <span class="pill">Use before any persona-specific opener</span>
+            <span class="pill">Bridges credibility to relevance in &lt;60s</span>
+          </div>
+        </div>
+        <div class="opener-text">
+          "I spent four years at Oracle Marketing Cloud building the Middle East and Africa team out of Dubai, hitting 110-300% of quota and closing $3.5M-plus ACV deals into companies that all had the same quiet problem: they'd bought best-of-breed everything and then couldn't get anything to talk to each other. That's the conversation I see Atlassian having now with enterprise buyers — except this time the substrate is already built. Teamwork Graph is the only place an AI agent can stand on context that has been earned over twenty years of real work. So before I ask about your stack, I'd rather start with whether that tension — agents without a substrate — is one you're seeing inside your own organisation."
+        </div>
+      </article>
+
+      <!-- VIEW TOGGLE -->
+      <div class="view-toggle" role="tablist" aria-label="Switch view">
+        <button id="btnPersona" aria-pressed="true" role="tab">By Persona <span class="count">· 5 cards</span></button>
+        <button id="btnTension" aria-pressed="false" role="tab">By Tension <span class="count">· 5 clusters</span></button>
+      </div>
+
+      <!-- BY PERSONA VIEW -->
+      <section id="viewPersona" class="view active" role="tabpanel" aria-labelledby="btnPersona">
+        <div class="persona-grid">
+
+          <!-- CIO -->
+          <article class="persona-card">
+            <div class="header">
+              <div class="eyebrow">Persona 1 · Platform Owner</div>
+              <h3>CIO / Head of Digital</h3>
+              <div class="role-meta">Platform consolidation · Vendor risk · Total cost of tooling</div>
+            </div>
+            <div class="competitor-strip"><strong>vs.</strong> ServiceNow · Microsoft Loop + Copilot + ADO · "We'll standardise on our own platform"</div>
+
+            <div class="section">
+              <h4>Person · World</h4>
+              <p>Owns the enterprise architecture decision. Sits on a SaaS portfolio of 200+ tools they cannot rationalise. Their last AI initiative — Copilot, an LLM POC, a vendor-led pilot — has not produced a defensible number for the board.</p>
+            </div>
+
+            <div class="section">
+              <h4>Surface Problem</h4>
+              <p>"We have tool sprawl. Every team has bought their own AI assistant. Nothing is connected, nothing is measurable, and renewals are about to land all at once."</p>
+            </div>
+
+            <div class="section hidden-flaw">
+              <h4>Hidden Flaw</h4>
+              <p>Every AI agent they have bought is reading the wrong substrate. The work — decisions, context, execution state — lives in Jira, Confluence, Slack, SharePoint, Notion, and email. The agents read documents, not the graph of work. So the answers are confident, plausible, and quietly wrong.</p>
+            </div>
+
+            <div class="section consequence">
+              <h4>Commercial Consequence</h4>
+              <p>The AI line item on the IT budget cannot be defended to the CFO. Tool consolidation has been a board commitment for two budget cycles and the count is still going up. The next CIO conversation is about justifying their job, not their roadmap.</p>
+            </div>
+
+            <div class="section">
+              <h4>Discovery Questions</h4>
+              <ul>
+                <li>Of the AI investments you've made in the last 18 months, which one has produced a number you'd put on a board slide?</li>
+                <li>When your AI agents answer a question about work in flight, where are they actually getting that context from?</li>
+                <li>How many systems would have to be connected for an agent to give your COO an honest answer about delivery this week?</li>
+                <li>What's the renewal you're most worried about losing — and what would replacing it require?</li>
+                <li>If you could collapse three categories of tooling into one platform decision in 2026, which three are at the top of your list?</li>
+              </ul>
+            </div>
+
+            <div class="section">
+              <h4>Triggers · When they're in-market now</h4>
+              <div class="pill-list">
+                <span class="pill">Data Center EOL Feb 2026</span>
+                <span class="pill">New CIO appointment &lt; 12 months</span>
+                <span class="pill">Failed Copilot pilot</span>
+                <span class="pill">Board AI mandate</span>
+                <span class="pill">SaaS rationalisation programme</span>
+              </div>
+            </div>
+
+            <div class="section">
+              <h4>Buying Signals</h4>
+              <ul>
+                <li>"We've got too many tools" — they're naming the problem unprompted</li>
+                <li>They ask about Teamwork Graph by name, not Rovo</li>
+                <li>They volunteer the ServiceNow renewal date</li>
+                <li>They introduce you to the CFO before you ask</li>
+              </ul>
+            </div>
+
+            <div class="section">
+              <h4>Where Atlassian Applies</h4>
+              <p>Atlassian Cloud Enterprise as the system of work. Teamwork Graph as the connective tissue under everything else they own. Rovo bundled in — not as a net-new AI line item but as the AI ROI they've already paid for and haven't collected. Teamwork Collection as the consolidation vehicle.</p>
+            </div>
+
+            <div class="section opener-quote">
+              <h4>First 90 Seconds</h4>
+              <p>"Most CIOs I'm speaking to right now aren't worried about adding AI — they're worried they can't defend the AI they've already bought. The pattern I keep seeing is that every agent is reading the wrong substrate. Is that tension showing up inside your portfolio, or is your bigger pressure somewhere else?"</p>
+            </div>
+
+            <div class="section proof">
+              <h4>Deploy This When · Proof Point</h4>
+              <p><strong>Domino's Pizza Enterprises</strong> consolidated six different ITSM tools globally onto Jira Service Management across 12 markets and 3,800 stores, and is now running Rovo virtual agents on top of a unified Atlassian System of Work. <a href="https://www.atlassian.com/blog/it-service-management/reimagining-service-management-with-dominos-and-nrma" target="_blank" rel="noopener">Atlassian / Domino's case</a></p>
+            </div>
+
+            <div class="section">
+              <h4>Bridge Line · To the Next Stakeholder</h4>
+              <p>"Before we go further, the question that always comes up next is whether your platform engineering team would agree the developer experience holds up. Do you want me to bring them into the next conversation, or do you want to test the brief with them first?"</p>
+            </div>
+          </article>
+
+          <!-- PLATFORM ENGINEERING -->
+          <article class="persona-card">
+            <div class="header">
+              <div class="eyebrow">Persona 2 · Throughput Owner</div>
+              <h3>VP / Head of Platform Engineering</h3>
+              <div class="role-meta">Developer productivity · IDP · Build &amp; deploy velocity</div>
+            </div>
+            <div class="competitor-strip"><strong>vs.</strong> GitLab · Linear · Backstage + homegrown · "We'll build our own IDP"</div>
+
+            <div class="section">
+              <h4>Person · World</h4>
+              <p>Responsible for whether 500-2,000 engineers ship faster this quarter than last. Tracks lead time, cycle time, deployment frequency, PR cycle time. Their CEO has asked them three times this year whether AI is making engineering faster.</p>
+            </div>
+
+            <div class="section">
+              <h4>Surface Problem</h4>
+              <p>"We've rolled out Copilot. Cycle time hasn't moved. The IDP project has been on the roadmap for two years and isn't shipping. Engineering throughput is still a black box to the business."</p>
+            </div>
+
+            <div class="section hidden-flaw">
+              <h4>Hidden Flaw</h4>
+              <p>Code generation moved fast. The rest of the engineering workflow — design, ticketing, review, deploy, incident — is still manual handoffs across disconnected tools. AI is accelerating the 30% of the work that was already fast and leaving the other 70% untouched.</p>
+            </div>
+
+            <div class="section consequence">
+              <h4>Commercial Consequence</h4>
+              <p>Engineering capacity is the single biggest line in the company's cost base, and the CEO has stopped believing the productivity number their VP Engineering reports. The next conversation about headcount is going to be uncomfortable.</p>
+            </div>
+
+            <div class="section">
+              <h4>Discovery Questions</h4>
+              <ul>
+                <li>What did your cycle time look like 12 months ago versus today? What changed?</li>
+                <li>When an engineer starts a new piece of work, how long from ticket to first commit — and where does most of that time go?</li>
+                <li>How much of the AI you've rolled out actually sits inside the developer's workflow, versus alongside it?</li>
+                <li>Is your IDP a build, a buy, or still a slide?</li>
+                <li>If a PR review took 45% less time, where would that capacity show up — more features, fewer engineers, or higher quality?</li>
+              </ul>
+            </div>
+
+            <div class="section">
+              <h4>Triggers · When they're in-market now</h4>
+              <div class="pill-list">
+                <span class="pill">Stalled IDP project</span>
+                <span class="pill">Engineering efficiency mandate</span>
+                <span class="pill">Copilot ROI review</span>
+                <span class="pill">New VP Eng &lt; 12 months</span>
+                <span class="pill">Post-IPO efficiency push</span>
+              </div>
+            </div>
+
+            <div class="section">
+              <h4>Buying Signals</h4>
+              <ul>
+                <li>They talk about cycle time without prompting</li>
+                <li>They reference DORA, SPACE, or DevEx by name</li>
+                <li>They ask about Compass or Rovo Code Reviewer specifically</li>
+                <li>They volunteer their internal IDP frustration</li>
+              </ul>
+            </div>
+
+            <div class="section">
+              <h4>Where Atlassian Applies</h4>
+              <p>Compass as the IDP layer. Jira + Confluence as the work substrate Rovo can actually read. Rovo Code Reviewer, Code Planner, and DevEx agents as throughput multipliers — measured in lead-time-to-start, not feature checkboxes.</p>
+            </div>
+
+            <div class="section opener-quote">
+              <h4>First 90 Seconds</h4>
+              <p>"The engineering leaders I'm speaking to all rolled out Copilot last year and almost none of them can point to a cycle-time number that moved. The pattern I keep seeing is that AI accelerated the coding and left the workflow untouched. Is that the conversation you're having internally, or is your bottleneck somewhere else?"</p>
+            </div>
+
+            <div class="section proof">
+              <h4>Deploy This When · Proof Point</h4>
+              <p>Atlassian's own engineering team saw a <strong>45% improvement in PR cycle time</strong> using Rovo Code Reviewer. Across Jira customers, developers who adopted Rovo AI started work <strong>30% faster</strong>, saw a <strong>35% reduction in Lead Time to Start</strong>, and recovered <strong>+1 productive day per month per developer</strong>. <strong>Domino's</strong> used Compass + Jira + Rovo to consolidate their internal developer platform. <a href="https://www.atlassian.com/blog/atlassian-engineering/jira-ai-productivity-how-rovo-helps-teams-start-work-30-percent-faster" target="_blank" rel="noopener">Atlassian engineering blog</a> · <a href="https://www.atlassian.com/blog/devops/from-dough-to-deployment" target="_blank" rel="noopener">Domino's Compass case</a></p>
+            </div>
+
+            <div class="section">
+              <h4>Bridge Line · To the Next Stakeholder</h4>
+              <p>"The number that lands hardest in the boardroom isn't cycle time — it's the COO's confidence in the delivery dashboard. Would it help if the next conversation included whoever owns that?"</p>
+            </div>
+          </article>
+
+          <!-- ITSM -->
+          <article class="persona-card">
+            <div class="header">
+              <div class="eyebrow">Persona 3 · Service Owner</div>
+              <h3>Head of ITSM / Service Operations</h3>
+              <div class="role-meta">Ticket deflection · MTTR · Agent capacity · ServiceNow decision</div>
+            </div>
+            <div class="competitor-strip"><strong>vs.</strong> ServiceNow · Freshservice · BMC Helix · Status quo (sunk-cost ServiceNow renewal)</div>
+
+            <div class="section">
+              <h4>Person · World</h4>
+              <p>Runs the service desk for 5,000-50,000 internal users. Spends 50-70% of their IT budget on ServiceNow. Has been told to deflect more tickets, raise CSAT, and reduce headcount — all at the same time.</p>
+            </div>
+
+            <div class="section">
+              <h4>Surface Problem</h4>
+              <p>"ServiceNow is too expensive but we can't rip it out. Every AI deflection vendor wants a fresh integration. Tier-1 ticket volume keeps growing and we cannot hire our way out of it."</p>
+            </div>
+
+            <div class="section hidden-flaw">
+              <h4>Hidden Flaw</h4>
+              <p>The ServiceNow renewal is being defended on switching cost, not on value. Meanwhile, every Rovo customer at JSM Premium gets Virtual Service Agent with 1,000 conversations/month included — at a fraction of the per-agent cost. The "we can't migrate" position is getting more expensive every quarter it's repeated.</p>
+            </div>
+
+            <div class="section consequence">
+              <h4>Commercial Consequence</h4>
+              <p>A 500-agent ITSM platform on ServiceNow runs $200-400 per agent per month fully loaded. The same workload on JSM Premium at $51.42 with Rovo bundled is a 60-80% TCO reduction in year one. The CFO will eventually do this math. The question is whether ITSM leadership runs the migration or has it run for them.</p>
+            </div>
+
+            <div class="section">
+              <h4>Discovery Questions</h4>
+              <ul>
+                <li>When does your ServiceNow renewal land, and what was the uplift last time?</li>
+                <li>What percentage of tier-1 tickets could be deflected if the agent could see across Jira, Confluence, and your knowledge base in one place?</li>
+                <li>How much of your ServiceNow estate is genuinely differentiated workflow versus standard ITSM you're paying premium pricing for?</li>
+                <li>If you had to move 500 agents to a new platform, what would be the actual blocker — data, change management, or the renewal cycle?</li>
+                <li>Who owns the ServiceNow vs. alternative decision in your organisation — and have they done the TCO math recently?</li>
+              </ul>
+            </div>
+
+            <div class="section">
+              <h4>Triggers · When they're in-market now</h4>
+              <div class="pill-list">
+                <span class="pill">ServiceNow renewal within 12 months</span>
+                <span class="pill">Recent ServiceNow uplift</span>
+                <span class="pill">ITSM cost-reduction mandate</span>
+                <span class="pill">Existing Jira footprint</span>
+                <span class="pill">Tier-1 volume growth pressure</span>
+              </div>
+            </div>
+
+            <div class="section">
+              <h4>Buying Signals</h4>
+              <ul>
+                <li>They name the ServiceNow renewal date unprompted</li>
+                <li>They ask about Virtual Service Agent pricing</li>
+                <li>They mention dev and IT being on different platforms today</li>
+                <li>They volunteer their deflection target</li>
+              </ul>
+            </div>
+
+            <div class="section">
+              <h4>Where Atlassian Applies</h4>
+              <p>Jira Service Management Enterprise as the ServiceNow alternative. Virtual Service Agent for tier-1 deflection. Assets for CMDB. Rovo for agent-side knowledge retrieval. Service Collection — which crossed $1B ARR and is growing 30%+ YoY — as the commercial vehicle.</p>
+            </div>
+
+            <div class="section opener-quote">
+              <h4>First 90 Seconds</h4>
+              <p>"Most ITSM leaders I'm speaking to are in the same trap: ServiceNow is too expensive to defend and too embedded to rip out. The pattern that's starting to break that is teams running their Jira-native workflows on JSM and only keeping ServiceNow for the genuinely differentiated 20%. Is that economics conversation alive in your org, or is the renewal still on autopilot?"</p>
+            </div>
+
+            <div class="section proof">
+              <h4>Deploy This When · Proof Point</h4>
+              <p><strong>Saint-Gobain</strong> cut ITSM cost by <strong>70% in year one</strong> migrating from ServiceNow to JSM, with a projected <strong>82% reduction by year three</strong>. <strong>1E</strong> (now part of TeamViewer) reduced ticket handling time <strong>by up to 80%</strong> using Rovo agents. Partner-led ServiceNow→JSM migrations consistently report <strong>68-80% TCO reduction</strong>. <a href="https://pages.eml.atlassian.com/rs/594-ATC-127/images/Atlassian-ITSM-Case-Study-Ebook.pdf" target="_blank" rel="noopener">Atlassian ITSM ebook (Saint-Gobain)</a> · <a href="https://diginomica.com/atlassian-team-25-customers-share-first-impressions-putting-rovo-ai-agent-work" target="_blank" rel="noopener">Diginomica · 1E</a></p>
+            </div>
+
+            <div class="section">
+              <h4>Bridge Line · To the Next Stakeholder</h4>
+              <p>"The TCO conversation usually pulls Finance into the room earlier than ITSM leaders expect. Do you want me to bring a Finance-ready version of the model to the next conversation, or keep this one technical?"</p>
+            </div>
+          </article>
+
+          <!-- COO / TRANSFORMATION -->
+          <article class="persona-card">
+            <div class="header">
+              <div class="eyebrow">Persona 4 · Delivery Owner</div>
+              <h3>Chief Transformation Officer / COO</h3>
+              <div class="role-meta">Cross-functional execution · OKR delivery · "Why does the board not know the truth"</div>
+            </div>
+            <div class="competitor-strip"><strong>vs.</strong> Monday · Asana · ClickUp · PowerPoint + a project management office</div>
+
+            <div class="section">
+              <h4>Person · World</h4>
+              <p>Owns the question "why are projects slipping?" at the board level. Has 30-60 strategic initiatives in flight. Tuesday-morning project review pulls status from six tools and a deck somebody rebuilds every week.</p>
+            </div>
+
+            <div class="section">
+              <h4>Surface Problem</h4>
+              <p>"I cannot get a single trustworthy view of delivery. Every team reports green until the project is two months late. Our transformation programme is supposed to be data-driven and it's running on PowerPoint."</p>
+            </div>
+
+            <div class="section hidden-flaw">
+              <h4>Hidden Flaw</h4>
+              <p>The riskiest initiatives are the ones with the most cross-functional dependencies — and those are exactly the ones invisible to any single team's tool. Status reporting is bottoms-up and weeks behind reality. By the time delivery risk surfaces, the board has already been briefed twice that things are on track.</p>
+            </div>
+
+            <div class="section consequence">
+              <h4>Commercial Consequence</h4>
+              <p>Board-visible OKR delivery slips quarterly. The COO's credibility erodes one missed milestone at a time. The next CEO conversation about "what's actually shipping" is one they cannot prepare for, because nobody owns the connected view.</p>
+            </div>
+
+            <div class="section">
+              <h4>Discovery Questions</h4>
+              <ul>
+                <li>When the board asks "are we on track" on Tuesday, what's the actual source of the answer — and how stale is it?</li>
+                <li>Of the projects that slipped last year, how many were visible as at-risk more than four weeks before the slip?</li>
+                <li>Where does context about a cross-functional initiative actually live — Slack, Jira, Confluence, email, or somebody's head?</li>
+                <li>If an AI agent could answer "what's the real status of project X" in 30 seconds, what would change about your operating cadence?</li>
+                <li>Who owns the single trustworthy delivery view today — and is that person being asked to do it on top of their day job?</li>
+              </ul>
+            </div>
+
+            <div class="section">
+              <h4>Triggers · When they're in-market now</h4>
+              <div class="pill-list">
+                <span class="pill">Recent board surprise on delivery</span>
+                <span class="pill">New COO &lt; 12 months</span>
+                <span class="pill">Transformation programme launch</span>
+                <span class="pill">PMO restructure</span>
+                <span class="pill">"Operating cadence" overhaul</span>
+              </div>
+            </div>
+
+            <div class="section">
+              <h4>Buying Signals</h4>
+              <ul>
+                <li>They use the phrase "system of record" or "single source of truth" without prompting</li>
+                <li>They name a recent project that slipped without warning</li>
+                <li>They ask whether Rovo can answer cross-functional status questions</li>
+                <li>They volunteer their Tuesday operating review pain</li>
+              </ul>
+            </div>
+
+            <div class="section">
+              <h4>Where Atlassian Applies</h4>
+              <p>Jira + Confluence as the system of work. Teamwork Graph as the connected delivery state. Rovo as the COO-side agent that answers "what's actually happening" in 30 seconds rather than 30 emails. Atlas (Atlassian's strategy-to-execution layer) as the board-visible reporting surface.</p>
+            </div>
+
+            <div class="section opener-quote">
+              <h4>First 90 Seconds</h4>
+              <p>"Most COOs I'm speaking to share one quiet frustration: the riskiest initiatives are the ones with the most dependencies, and those are exactly the ones nobody can see in real time. The pattern that breaks it is having an agent that can read across the entire work substrate, not just one team's tool. Is that the conversation you're having in your operating reviews, or is your problem somewhere else?"</p>
+            </div>
+
+            <div class="section proof">
+              <h4>Deploy This When · Proof Point</h4>
+              <p><strong>Lufthansa Systems</strong> collapsed multiple project-level service desks into one horizontal JSM Customer Service Portal that now serves <strong>300+ airlines</strong> through a single platform with native knowledge-base self-service. <strong>ServiceRocket</strong> used Rovo to build a 20-year account intelligence dashboard in <strong>three minutes</strong> by querying 61 sources across the Teamwork Graph. <a href="https://www.youtube.com/watch?v=CiJWNzRUNHo" target="_blank" rel="noopener">Lufthansa Systems case</a> · <a href="https://www.servicerocket.com/resources/atlassian-team26-highlights-building-the-ai-native-enterprise" target="_blank" rel="noopener">ServiceRocket Team '26 recap</a></p>
+            </div>
+
+            <div class="section">
+              <h4>Bridge Line · To the Next Stakeholder</h4>
+              <p>"The operating-cadence conversation lands harder when the CFO is in the room — because the next question they ask is what you'd stop spending on if you had this view. Should we bring them in earlier?"</p>
+            </div>
+          </article>
+
+          <!-- CFO -->
+          <article class="persona-card">
+            <div class="header">
+              <div class="eyebrow">Persona 5 · Capital Owner</div>
+              <h3>CFO / Finance Business Partner to Tech</h3>
+              <div class="role-meta">Software portfolio cost · AI ROI scrutiny · Contract consolidation</div>
+            </div>
+            <div class="competitor-strip"><strong>vs.</strong> "Do nothing" · Excel and a procurement freeze · "Wait for the AI hype to settle"</div>
+
+            <div class="section">
+              <h4>Person · World</h4>
+              <p>Looking at a software portfolio that grew 40-60% over three years, a flat-to-down headcount plan, and an AI line item with no defensible ROI. Has been asked by the CEO and the board for a credible AI productivity number — twice.</p>
+            </div>
+
+            <div class="section">
+              <h4>Surface Problem</h4>
+              <p>"Software spend is up. AI spend is the fastest-growing line in IT. I cannot tell the board what we got for either of them. Renewals are coming and I need a portfolio strategy, not another vendor."</p>
+            </div>
+
+            <div class="section hidden-flaw">
+              <h4>Hidden Flaw</h4>
+              <p>The AI line on the IT budget is being treated as a new category, but most of it is actually replicating capability the company already paid for in its existing platforms. Atlassian customers, for example, already have Rovo bundled into Premium and Enterprise editions — the AI ROI is sitting in seats they're already paying for, going un-activated.</p>
+            </div>
+
+            <div class="section consequence">
+              <h4>Commercial Consequence</h4>
+              <p>Three to five point tools could be eliminated by standardising on Atlassian as the system of work. The Data Center to Cloud migration is going to force a budget conversation in 2026 anyway. The choice is whether Finance leads that conversation with a portfolio strategy or has it imposed on them by IT.</p>
+            </div>
+
+            <div class="section">
+              <h4>Discovery Questions</h4>
+              <ul>
+                <li>What's your current annual spend across Atlassian, ServiceNow, Notion, Monday/Asana, and standalone AI tools combined?</li>
+                <li>Of the AI spend in the last 18 months, what's the ROI number you'd put in front of the audit committee?</li>
+                <li>What's the Data Center to Cloud decision looking like for you, and what's the deadline forcing it?</li>
+                <li>If you consolidated three categories of tooling into one platform, what would the year-one savings need to be to make the migration credible?</li>
+                <li>Who else in the organisation is most exposed if the AI ROI question goes unanswered — and would they be useful in this conversation?</li>
+              </ul>
+            </div>
+
+            <div class="section">
+              <h4>Triggers · When they're in-market now</h4>
+              <div class="pill-list">
+                <span class="pill">Budget cycle &lt; 90 days out</span>
+                <span class="pill">Software audit / portfolio review</span>
+                <span class="pill">Data Center migration decision</span>
+                <span class="pill">New CFO &lt; 12 months</span>
+                <span class="pill">AI ROI board ask</span>
+              </div>
+            </div>
+
+            <div class="section">
+              <h4>Buying Signals</h4>
+              <ul>
+                <li>They ask about consolidation math, not features</li>
+                <li>They name three tools they want to kill</li>
+                <li>They volunteer their Data Center migration timeline</li>
+                <li>They want a TCO model on paper before the next conversation</li>
+              </ul>
+            </div>
+
+            <div class="section">
+              <h4>Where Atlassian Applies</h4>
+              <p>Atlassian Cloud Enterprise as the consolidation target. Teamwork Collection as the AI monetisation vehicle bundled into existing seats (not a separate line item). Service Collection as the ServiceNow displacement. The Data Center to Cloud migration timeline as the forcing function for a portfolio decision.</p>
+            </div>
+
+            <div class="section opener-quote">
+              <h4>First 90 Seconds</h4>
+              <p>"Most CFOs I'm speaking to share a specific frustration: AI spend is the fastest-growing line in IT and the only one without a defensible ROI number. The pattern that's emerging is that the AI ROI was sitting in platforms they were already paying for — and they were buying it again as a separate line. Is that conversation happening in your portfolio review, or is your priority somewhere else this quarter?"</p>
+            </div>
+
+            <div class="section proof">
+              <h4>Deploy This When · Proof Point</h4>
+              <p><strong>Air France-KLM</strong> saves <strong>$600,000 per year</strong> by migrating from OpenStack and Atlassian Data Center to Atlassian Cloud Premium — eliminating downtime, maintenance, server costs, and freeing thousands of hours per day. Across the platform, customers using Rovo are growing ARR at <strong>2x the rate</strong> of non-Rovo customers, with 75% of the Fortune 500 having activated Rovo. <a href="https://www.atlassian.com/customers/air-france-klm" target="_blank" rel="noopener">Air France-KLM case</a> · <a href="https://www.atlassian.com/blog/company-news/shareholder-letter-q3fy26" target="_blank" rel="noopener">Q3 FY26 shareholder letter</a></p>
+            </div>
+
+            <div class="section">
+              <h4>Bridge Line · To the Next Stakeholder</h4>
+              <p>"The CFO conversation usually unlocks the CIO conversation, not the other way around. Would it help if I brought a one-page consolidation model to the next meeting that both of you can react to together?"</p>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- BY TENSION VIEW -->
+      <section id="viewTension" class="view" role="tabpanel" aria-labelledby="btnTension">
+        <div class="tension-grid">
+
+          <article class="tension-card">
+            <div class="left">
+              <div class="eyebrow">Tension 1</div>
+              <h3>Tool sprawl &amp; the consolidation overdue</h3>
+              <div class="pill-list">
+                <span class="pill">CIO</span>
+                <span class="pill">CFO</span>
+              </div>
+            </div>
+            <div class="right">
+              <div>
+                <h4>What both personas are feeling</h4>
+                <p>Software spend grew faster than headcount, AI added another layer of point tools, and renewals are now landing within months of each other. Neither persona has a portfolio strategy that survives the next board meeting.</p>
+              </div>
+              <div class="quote">"We've been promising to rationalise the stack for two years and the tool count is still going up."</div>
+              <div>
+                <h4>Where Atlassian lands</h4>
+                <p>Atlassian Cloud Enterprise + Teamwork Collection as a consolidation target that absorbs the AI line item rather than adding to it. The Data Center to Cloud forcing function makes 2026 the budget cycle this gets decided in.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="tension-card">
+            <div class="left">
+              <div class="eyebrow">Tension 2</div>
+              <h3>AI bought, ROI missing</h3>
+              <div class="pill-list">
+                <span class="pill">CIO</span>
+                <span class="pill">COO</span>
+                <span class="pill">CFO</span>
+              </div>
+            </div>
+            <div class="right">
+              <div>
+                <h4>What all three personas are feeling</h4>
+                <p>Copilot, an LLM POC, a vendor pilot — none have produced a board-defensible number. The board is asking, the auditors are asking, and nobody owns the answer.</p>
+              </div>
+              <div class="quote">"We've spent on AI. I cannot tell you what we got."</div>
+              <div>
+                <h4>Where Atlassian lands</h4>
+                <p>Rovo isn't an AI feature being sold on top of the platform — it's the value of having built the substrate. The 2x ARR growth differential reported in Atlassian's Q3 FY26 letter is the proof point that AI ROI requires connected work, not better models.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="tension-card">
+            <div class="left">
+              <div class="eyebrow">Tension 3</div>
+              <h3>Engineering throughput is a black box</h3>
+              <div class="pill-list">
+                <span class="pill">Platform Eng</span>
+                <span class="pill">COO</span>
+              </div>
+            </div>
+            <div class="right">
+              <div>
+                <h4>What both personas are feeling</h4>
+                <p>Code generation moved fast. Cycle time didn't. The CEO has stopped believing the productivity reports and the board has stopped asking nicely.</p>
+              </div>
+              <div class="quote">"We rolled out Copilot. The number didn't move."</div>
+              <div>
+                <h4>Where Atlassian lands</h4>
+                <p>Rovo Code Reviewer + Compass + Jira AI deliver measurable lead-time reductions (Atlassian internal: 45% PR cycle improvement; Jira customers: 35% Lead Time to Start reduction). Throughput becomes a number, not a vibe.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="tension-card">
+            <div class="left">
+              <div class="eyebrow">Tension 4</div>
+              <h3>ServiceNow is too expensive, too embedded</h3>
+              <div class="pill-list">
+                <span class="pill">ITSM</span>
+                <span class="pill">CFO</span>
+                <span class="pill">CIO</span>
+              </div>
+            </div>
+            <div class="right">
+              <div>
+                <h4>What all three personas are feeling</h4>
+                <p>The ServiceNow renewal is being defended on switching cost, not value. Every uplift makes the math worse. The next conversation is uncomfortable for whoever runs ITSM.</p>
+              </div>
+              <div class="quote">"We can't rip it out, but we can't keep paying this either."</div>
+              <div>
+                <h4>Where Atlassian lands</h4>
+                <p>Service Collection ($1B+ ARR, 30%+ YoY growth) + JSM Enterprise + Virtual Service Agent as a 60-80% TCO alternative. Saint-Gobain (70-82% cost reduction) and Sngular's automotive customer (68% saving) are the proof.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="tension-card">
+            <div class="left">
+              <div class="eyebrow">Tension 5</div>
+              <h3>Data Center is forcing a decision they aren't ready for</h3>
+              <div class="pill-list">
+                <span class="pill">CIO</span>
+                <span class="pill">Platform Eng</span>
+                <span class="pill">CFO</span>
+              </div>
+            </div>
+            <div class="right">
+              <div>
+                <h4>What all three personas are feeling</h4>
+                <p>Data Center EOL has a 2026 deadline. Migration was always going to happen. Nobody owns the budget conversation that goes with it, and the longer it's delayed the more expensive it becomes.</p>
+              </div>
+              <div class="quote">"We knew this was coming. We're not ready."</div>
+              <div>
+                <h4>Where Atlassian lands</h4>
+                <p>The migration is the budget cycle. Treated reactively it's a cost. Treated strategically it's the entry point to Teamwork Collection, AI monetisation, and the platform consolidation everyone has been postponing. Air France-KLM's $600k annual saving is the playbook.</p>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- MEDDPICC TRANSLATION -->
+      <article class="meddpicc-card">
+        <h2>The discovery questions, translated to MEDDPICC</h2>
+        <p class="lead">Every conversational question on the persona cards maps to a MEDDPICC field. This panel exists for one reason: to show that the soft language above is sitting on top of disciplined qualification underneath.</p>
+        <div class="meddpicc-grid">
+          <div class="meddpicc-row">
+            <h4>M · Metrics</h4>
+            <p>The number the buyer puts on a board slide.</p>
+            <div class="map"><strong>Listen for:</strong> cycle time, MTTR, deflection %, ARR/seat, TCO delta, defensible AI ROI. <strong>From the cards:</strong> CIO Q1, Platform Eng Q1, ITSM Q2, COO Q2, CFO Q2.</div>
+          </div>
+          <div class="meddpicc-row">
+            <h4>E · Economic Buyer</h4>
+            <p>The signer of a £500k-£3M+ ACV decision.</p>
+            <div class="map"><strong>Listen for:</strong> who owns the renewal, who owns the AI line, who briefs the board. <strong>From the cards:</strong> CIO Q4, ITSM Q5, CFO Q5.</div>
+          </div>
+          <div class="meddpicc-row">
+            <h4>D · Decision Criteria</h4>
+            <p>What "good" looks like to them, in their language.</p>
+            <div class="map"><strong>Listen for:</strong> consolidation math, throughput numbers, TCO model, audit-committee narrative. <strong>From the cards:</strong> every "Buying Signals" section.</div>
+          </div>
+          <div class="meddpicc-row">
+            <h4>D · Decision Process</h4>
+            <p>How a decision actually happens here.</p>
+            <div class="map"><strong>Listen for:</strong> renewal date, budget cycle, board cadence, procurement gate. <strong>From the cards:</strong> all "Triggers" rows + ITSM Q1, CFO Q1+Q3.</div>
+          </div>
+          <div class="meddpicc-row">
+            <h4>P · Paper Process</h4>
+            <p>The procurement, legal, and security path.</p>
+            <div class="map"><strong>Listen for:</strong> security review timeline, paper deadlines, partner-channel preference. <strong>Card hook:</strong> ask after the bridge to the next stakeholder.</div>
+          </div>
+          <div class="meddpicc-row">
+            <h4>I · Identify Pain</h4>
+            <p>The Hidden Flaw, surfaced in their own words.</p>
+            <div class="map"><strong>Listen for:</strong> the pain they volunteer unprompted. <strong>From the cards:</strong> every "Hidden Flaw" + "First 90 Seconds" pairing.</div>
+          </div>
+          <div class="meddpicc-row">
+            <h4>C · Champion</h4>
+            <p>Someone with power and motive to sell internally.</p>
+            <div class="map"><strong>Listen for:</strong> "I've been trying to get this on the agenda" / "Finance and I have been talking about this". <strong>Card hook:</strong> every "Bridge Line" — it's how you test for a champion in 30 seconds.</div>
+          </div>
+          <div class="meddpicc-row">
+            <h4>C · Competition</h4>
+            <p>The realistic alternative — including "do nothing".</p>
+            <div class="map"><strong>Listen for:</strong> ServiceNow renewal language, Copilot rollout, "we'll build our own". <strong>From the cards:</strong> every red "vs." strip at the top of a persona card.</div>
+          </div>
+        </div>
+      </article>
+
+      <footer class="footer">
+        <div>Atlassian Persona Discovery Cards · Learning aid for the Enterprise New Logo UKI motion</div>
+        <div>Built on the Ironclad cards pattern · <a href="https://ironclad-persona-cards.vercel.app/" target="_blank" rel="noopener">Ironclad reference</a></div>
+      </footer>
+
+    </main>
+  </div>
+
+  <script>
+    (function(){
+      // Theme toggle with persistence
+      var root = document.documentElement;
+      var themeBtn = document.getElementById('themeToggle');
+      var saved = localStorage.getItem('theme');
+      if (saved) root.setAttribute('data-theme', saved);
+      themeBtn.addEventListener('click', function(){
+        var cur = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', cur);
+        localStorage.setItem('theme', cur);
+      });
+
+      // View toggle with persistence
+      var btnPersona = document.getElementById('btnPersona');
+      var btnTension = document.getElementById('btnTension');
+      var viewPersona = document.getElementById('viewPersona');
+      var viewTension = document.getElementById('viewTension');
+      function setView(v){
+        var isP = v === 'persona';
+        btnPersona.setAttribute('aria-pressed', isP);
+        btnTension.setAttribute('aria-pressed', !isP);
+        viewPersona.classList.toggle('active', isP);
+        viewTension.classList.toggle('active', !isP);
+        localStorage.setItem('view', v);
+      }
+      btnPersona.addEventListener('click', function(){ setView('persona'); });
+      btnTension.addEventListener('click', function(){ setView('tension'); });
+      var savedView = localStorage.getItem('view');
+      if (savedView === 'tension') setView('tension');
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0052cc"/>
+      <stop offset="55%" stop-color="#0c66e4"/>
+      <stop offset="100%" stop-color="#6554c0"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.16"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.06"/>
+    </linearGradient>
+    <radialGradient id="glow1" cx="0.85" cy="0.15" r="0.6">
+      <stop offset="0%" stop-color="#85b8ff" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#85b8ff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="0.1" cy="0.95" r="0.7">
+      <stop offset="0%" stop-color="#6554c0" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#6554c0" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="softShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#000" flood-opacity="0.18"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow1)"/>
+  <rect width="1200" height="630" fill="url(#glow2)"/>
+
+  <!-- Subtle grid -->
+  <g stroke="#ffffff" stroke-opacity="0.06" stroke-width="1">
+    <line x1="0" y1="158" x2="1200" y2="158"/>
+    <line x1="0" y1="316" x2="1200" y2="316"/>
+    <line x1="0" y1="474" x2="1200" y2="474"/>
+    <line x1="300" y1="0" x2="300" y2="630"/>
+    <line x1="600" y1="0" x2="600" y2="630"/>
+    <line x1="900" y1="0" x2="900" y2="630"/>
+  </g>
+
+  <!-- Atlassian-style mark (two stacked chevrons) -->
+  <g transform="translate(72, 64)" filter="url(#softShadow)">
+    <rect width="56" height="56" rx="14" fill="#ffffff" fill-opacity="0.14"/>
+    <g transform="translate(10, 12)" fill="#ffffff">
+      <path d="M0 26 L9 14 L18 26 Q15 22 9 22 Q3 22 0 26 Z"/>
+      <path d="M16 14 L25 2 L34 14 Q31 10 25 10 Q19 10 16 14 Z" opacity="0.85"/>
+    </g>
+  </g>
+  <text x="148" y="103" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="22" font-weight="600" fill="#ffffff" fill-opacity="0.92" letter-spacing="0.5">Atlassian · Enterprise New Logo UKI</text>
+
+  <!-- Title -->
+  <text x="72" y="220" font-family="Georgia, 'Times New Roman', serif" font-size="76" font-weight="700" fill="#ffffff" letter-spacing="-1.2">Persona Discovery Cards</text>
+  <text x="72" y="278" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="28" font-weight="400" fill="#ffffff" fill-opacity="0.85">Position value early · qualify pain · earn the evaluation</text>
+
+  <!-- Persona pills -->
+  <g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="20" font-weight="600" fill="#ffffff">
+    <g transform="translate(72, 360)">
+      <rect width="186" height="58" rx="14" fill="url(#card)" stroke="#ffffff" stroke-opacity="0.28"/>
+      <text x="93" y="37" text-anchor="middle">CIO</text>
+    </g>
+    <g transform="translate(274, 360)">
+      <rect width="240" height="58" rx="14" fill="url(#card)" stroke="#ffffff" stroke-opacity="0.28"/>
+      <text x="120" y="37" text-anchor="middle">Platform Eng</text>
+    </g>
+    <g transform="translate(530, 360)">
+      <rect width="186" height="58" rx="14" fill="url(#card)" stroke="#ffffff" stroke-opacity="0.28"/>
+      <text x="93" y="37" text-anchor="middle">ITSM</text>
+    </g>
+    <g transform="translate(732, 360)">
+      <rect width="186" height="58" rx="14" fill="url(#card)" stroke="#ffffff" stroke-opacity="0.28"/>
+      <text x="93" y="37" text-anchor="middle">COO</text>
+    </g>
+    <g transform="translate(934, 360)">
+      <rect width="186" height="58" rx="14" fill="url(#card)" stroke="#ffffff" stroke-opacity="0.28"/>
+      <text x="93" y="37" text-anchor="middle">CFO</text>
+    </g>
+  </g>
+
+  <!-- Bottom strip with arc -->
+  <g transform="translate(72, 478)" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" fill="#ffffff">
+    <text font-size="18" font-weight="600" fill-opacity="0.7" letter-spacing="2">THE ARC</text>
+    <g transform="translate(0, 36)" font-size="22" font-weight="500">
+      <text x="0" y="0">Value</text>
+      <text x="92" y="0" fill-opacity="0.55">→</text>
+      <text x="124" y="0">Pain</text>
+      <text x="206" y="0" fill-opacity="0.55">→</text>
+      <text x="238" y="0">Alignment</text>
+      <text x="402" y="0" fill-opacity="0.55">→</text>
+      <text x="434" y="0">Evaluation</text>
+    </g>
+  </g>
+
+  <!-- Right meta -->
+  <g transform="translate(1128, 580)" text-anchor="end" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" fill="#ffffff" fill-opacity="0.7">
+    <text font-size="18" font-weight="500">Built by Alex Abbott · Supero GTM</text>
+  </g>
+</svg>
